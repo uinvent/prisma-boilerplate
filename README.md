@@ -8,12 +8,9 @@ Boilerplate project with dependencies that are required to start Prisma based ap
 2. Docker Compose
 3. Postgres 10.3
 
-## Background
-
-This application will be using locally deployed database 'postgres' and schema 'boilerplate'
-
 ## Development Steps
 
+This application will be using locally deployed database 'postgres' and schema 'boilerplate'
 Follow steps from https://www.prisma.io/docs/get-started/01-setting-up-prisma-new-database-TYPESCRIPT-t002/
 
 ### Changes made for boilerplate
@@ -34,3 +31,14 @@ Follow steps from https://www.prisma.io/docs/get-started/01-setting-up-prisma-ne
 4. "prisma generate"
    1. Will create prisma client inside ./generated/prisma-client/
 5. In index.ts prisma client API is being used; which is a wrapper on Prisma API hosted on Prisma Server
+
+## Database Schema
+
+Schema covers n:m, 1:m and parent child relationships
+For example, only Equipment has,
+
+1. one to many relationship with Equipment Properties
+2. many to many relationship with Equipment Class
+3. parent child relationship with it self
+
+All of these types are written in datamodel.prisma file
