@@ -16,7 +16,12 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
 export type Maybe<T> = T | undefined | null;
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  equipment: (where?: EquipmentWhereInput) => Promise<boolean>;
+  equipmentClass: (where?: EquipmentClassWhereInput) => Promise<boolean>;
+  equipmentClassProperty: (
+    where?: EquipmentClassPropertyWhereInput
+  ) => Promise<boolean>;
+  equipmentProperty: (where?: EquipmentPropertyWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -38,47 +43,176 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserNullablePromise;
-  users: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  equipment: (where: EquipmentWhereUniqueInput) => EquipmentNullablePromise;
+  equipments: (args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
-  usersConnection: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  }) => FragmentableArray<Equipment>;
+  equipmentsConnection: (args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
+  }) => EquipmentConnectionPromise;
+  equipmentClass: (
+    where: EquipmentClassWhereUniqueInput
+  ) => EquipmentClassNullablePromise;
+  equipmentClasses: (args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<EquipmentClass>;
+  equipmentClassesConnection: (args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EquipmentClassConnectionPromise;
+  equipmentClassProperty: (
+    where: EquipmentClassPropertyWhereUniqueInput
+  ) => EquipmentClassPropertyNullablePromise;
+  equipmentClassProperties: (args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<EquipmentClassProperty>;
+  equipmentClassPropertiesConnection: (args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EquipmentClassPropertyConnectionPromise;
+  equipmentProperty: (
+    where: EquipmentPropertyWhereUniqueInput
+  ) => EquipmentPropertyNullablePromise;
+  equipmentProperties: (args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<EquipmentProperty>;
+  equipmentPropertiesConnection: (args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => EquipmentPropertyConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (args: {
-    data: UserUpdateInput;
-    where: UserWhereUniqueInput;
-  }) => UserPromise;
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput;
-    where?: UserWhereInput;
+  createEquipment: (data: EquipmentCreateInput) => EquipmentPromise;
+  updateEquipment: (args: {
+    data: EquipmentUpdateInput;
+    where: EquipmentWhereUniqueInput;
+  }) => EquipmentPromise;
+  updateManyEquipments: (args: {
+    data: EquipmentUpdateManyMutationInput;
+    where?: EquipmentWhereInput;
   }) => BatchPayloadPromise;
-  upsertUser: (args: {
-    where: UserWhereUniqueInput;
-    create: UserCreateInput;
-    update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  upsertEquipment: (args: {
+    where: EquipmentWhereUniqueInput;
+    create: EquipmentCreateInput;
+    update: EquipmentUpdateInput;
+  }) => EquipmentPromise;
+  deleteEquipment: (where: EquipmentWhereUniqueInput) => EquipmentPromise;
+  deleteManyEquipments: (where?: EquipmentWhereInput) => BatchPayloadPromise;
+  createEquipmentClass: (
+    data: EquipmentClassCreateInput
+  ) => EquipmentClassPromise;
+  updateEquipmentClass: (args: {
+    data: EquipmentClassUpdateInput;
+    where: EquipmentClassWhereUniqueInput;
+  }) => EquipmentClassPromise;
+  updateManyEquipmentClasses: (args: {
+    data: EquipmentClassUpdateManyMutationInput;
+    where?: EquipmentClassWhereInput;
+  }) => BatchPayloadPromise;
+  upsertEquipmentClass: (args: {
+    where: EquipmentClassWhereUniqueInput;
+    create: EquipmentClassCreateInput;
+    update: EquipmentClassUpdateInput;
+  }) => EquipmentClassPromise;
+  deleteEquipmentClass: (
+    where: EquipmentClassWhereUniqueInput
+  ) => EquipmentClassPromise;
+  deleteManyEquipmentClasses: (
+    where?: EquipmentClassWhereInput
+  ) => BatchPayloadPromise;
+  createEquipmentClassProperty: (
+    data: EquipmentClassPropertyCreateInput
+  ) => EquipmentClassPropertyPromise;
+  updateEquipmentClassProperty: (args: {
+    data: EquipmentClassPropertyUpdateInput;
+    where: EquipmentClassPropertyWhereUniqueInput;
+  }) => EquipmentClassPropertyPromise;
+  updateManyEquipmentClassProperties: (args: {
+    data: EquipmentClassPropertyUpdateManyMutationInput;
+    where?: EquipmentClassPropertyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertEquipmentClassProperty: (args: {
+    where: EquipmentClassPropertyWhereUniqueInput;
+    create: EquipmentClassPropertyCreateInput;
+    update: EquipmentClassPropertyUpdateInput;
+  }) => EquipmentClassPropertyPromise;
+  deleteEquipmentClassProperty: (
+    where: EquipmentClassPropertyWhereUniqueInput
+  ) => EquipmentClassPropertyPromise;
+  deleteManyEquipmentClassProperties: (
+    where?: EquipmentClassPropertyWhereInput
+  ) => BatchPayloadPromise;
+  createEquipmentProperty: (
+    data: EquipmentPropertyCreateInput
+  ) => EquipmentPropertyPromise;
+  updateEquipmentProperty: (args: {
+    data: EquipmentPropertyUpdateInput;
+    where: EquipmentPropertyWhereUniqueInput;
+  }) => EquipmentPropertyPromise;
+  updateManyEquipmentProperties: (args: {
+    data: EquipmentPropertyUpdateManyMutationInput;
+    where?: EquipmentPropertyWhereInput;
+  }) => BatchPayloadPromise;
+  upsertEquipmentProperty: (args: {
+    where: EquipmentPropertyWhereUniqueInput;
+    create: EquipmentPropertyCreateInput;
+    update: EquipmentPropertyUpdateInput;
+  }) => EquipmentPropertyPromise;
+  deleteEquipmentProperty: (
+    where: EquipmentPropertyWhereUniqueInput
+  ) => EquipmentPropertyPromise;
+  deleteManyEquipmentProperties: (
+    where?: EquipmentPropertyWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -88,9 +222,18 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  equipment: (
+    where?: EquipmentSubscriptionWhereInput
+  ) => EquipmentSubscriptionPayloadSubscription;
+  equipmentClass: (
+    where?: EquipmentClassSubscriptionWhereInput
+  ) => EquipmentClassSubscriptionPayloadSubscription;
+  equipmentClassProperty: (
+    where?: EquipmentClassPropertySubscriptionWhereInput
+  ) => EquipmentClassPropertySubscriptionPayloadSubscription;
+  equipmentProperty: (
+    where?: EquipmentPropertySubscriptionWhereInput
+  ) => EquipmentPropertySubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -101,24 +244,65 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
+export type EquipmentPropertyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "code_ASC"
+  | "code_DESC"
+  | "description_ASC"
+  | "description_DESC";
+
+export type EquipmentClassOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "code_ASC"
+  | "code_DESC"
+  | "description_ASC"
+  | "description_DESC";
+
+export type EquipmentClassPropertyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "code_ASC"
+  | "code_DESC"
+  | "description_ASC"
+  | "description_DESC";
+
+export type EquipmentOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "code_ASC"
+  | "code_DESC"
+  | "description_ASC"
+  | "description_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
+export interface EquipmentClassPropertyUpdateWithWhereUniqueWithoutEquipmentClassInput {
+  where: EquipmentClassPropertyWhereUniqueInput;
+  data: EquipmentClassPropertyUpdateWithoutEquipmentClassDataInput;
 }
 
-export interface UserUpdateInput {
-  name?: Maybe<String>;
+export type EquipmentWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput {
+  create?: Maybe<EquipmentClassCreateWithoutEquipmentClass_propertiesInput>;
+  update?: Maybe<EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput>;
+  upsert?: Maybe<EquipmentClassUpsertWithoutEquipmentClass_propertiesInput>;
+  connect?: Maybe<EquipmentClassWhereUniqueInput>;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: Maybe<String>;
-}
-
-export interface UserWhereInput {
+export interface EquipmentClassPropertyWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -147,166 +331,1862 @@ export interface UserWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
-  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
-  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
-  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  equipmentClass?: Maybe<EquipmentClassWhereInput>;
+  parent?: Maybe<EquipmentClassPropertyWhereInput>;
+  children_every?: Maybe<EquipmentClassPropertyWhereInput>;
+  children_some?: Maybe<EquipmentClassPropertyWhereInput>;
+  children_none?: Maybe<EquipmentClassPropertyWhereInput>;
+  AND?: Maybe<
+    EquipmentClassPropertyWhereInput[] | EquipmentClassPropertyWhereInput
+  >;
+  OR?: Maybe<
+    EquipmentClassPropertyWhereInput[] | EquipmentClassPropertyWhereInput
+  >;
+  NOT?: Maybe<
+    EquipmentClassPropertyWhereInput[] | EquipmentClassPropertyWhereInput
+  >;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface EquipmentPropertyUpdateWithWhereUniqueWithoutEquipmentInput {
+  where: EquipmentPropertyWhereUniqueInput;
+  data: EquipmentPropertyUpdateWithoutEquipmentDataInput;
+}
+
+export interface EquipmentPropertyUpdateWithoutParentDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment?: Maybe<EquipmentUpdateOneRequiredWithoutEquipmentPropertiesInput>;
+  children?: Maybe<EquipmentPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyUpdateWithoutEquipmentDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  parent?: Maybe<EquipmentPropertyUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyUpdateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentPropertyCreateWithoutChildrenInput>;
+  update?: Maybe<EquipmentPropertyUpdateWithoutChildrenDataInput>;
+  upsert?: Maybe<EquipmentPropertyUpsertWithoutChildrenInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EquipmentPropertyWhereUniqueInput>;
+}
+
+export interface EquipmentPropertySubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  node?: Maybe<EquipmentPropertyWhereInput>;
+  AND?: Maybe<
+    | EquipmentPropertySubscriptionWhereInput[]
+    | EquipmentPropertySubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | EquipmentPropertySubscriptionWhereInput[]
+    | EquipmentPropertySubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | EquipmentPropertySubscriptionWhereInput[]
+    | EquipmentPropertySubscriptionWhereInput
+  >;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export interface EquipmentPropertyUpdateWithoutChildrenDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment?: Maybe<EquipmentUpdateOneRequiredWithoutEquipmentPropertiesInput>;
+  parent?: Maybe<EquipmentPropertyUpdateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentClassPropertySubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<EquipmentClassPropertyWhereInput>;
+  AND?: Maybe<
+    | EquipmentClassPropertySubscriptionWhereInput[]
+    | EquipmentClassPropertySubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | EquipmentClassPropertySubscriptionWhereInput[]
+    | EquipmentClassPropertySubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | EquipmentClassPropertySubscriptionWhereInput[]
+    | EquipmentClassPropertySubscriptionWhereInput
+  >;
+}
+
+export interface EquipmentUpdateOneRequiredWithoutEquipmentPropertiesInput {
+  create?: Maybe<EquipmentCreateWithoutEquipmentPropertiesInput>;
+  update?: Maybe<EquipmentUpdateWithoutEquipmentPropertiesDataInput>;
+  upsert?: Maybe<EquipmentUpsertWithoutEquipmentPropertiesInput>;
+  connect?: Maybe<EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<EquipmentWhereInput>;
+  AND?: Maybe<
+    EquipmentSubscriptionWhereInput[] | EquipmentSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    EquipmentSubscriptionWhereInput[] | EquipmentSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    EquipmentSubscriptionWhereInput[] | EquipmentSubscriptionWhereInput
+  >;
+}
+
+export interface EquipmentUpdateWithoutEquipmentPropertiesDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClasses?: Maybe<EquipmentClassUpdateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment?: Maybe<EquipmentUpdateOneRequiredWithoutEquipmentPropertiesInput>;
+  parent?: Maybe<EquipmentPropertyUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassUpdateManyWithoutEquipmentsInput {
+  create?: Maybe<
+    | EquipmentClassCreateWithoutEquipmentsInput[]
+    | EquipmentClassCreateWithoutEquipmentsInput
+  >;
+  delete?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  connect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  set?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentClassUpdateWithWhereUniqueWithoutEquipmentsInput[]
+    | EquipmentClassUpdateWithWhereUniqueWithoutEquipmentsInput
+  >;
+  upsert?: Maybe<
+    | EquipmentClassUpsertWithWhereUniqueWithoutEquipmentsInput[]
+    | EquipmentClassUpsertWithWhereUniqueWithoutEquipmentsInput
+  >;
+  deleteMany?: Maybe<
+    EquipmentClassScalarWhereInput[] | EquipmentClassScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentClassUpdateManyWithWhereNestedInput[]
+    | EquipmentClassUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentClassPropertyUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassUpdateWithWhereUniqueWithoutEquipmentsInput {
+  where: EquipmentClassWhereUniqueInput;
+  data: EquipmentClassUpdateWithoutEquipmentsDataInput;
+}
+
+export interface EquipmentClassPropertyUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass?: Maybe<
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  >;
+  parent?: Maybe<EquipmentClassPropertyUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassUpdateWithoutEquipmentsDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  >;
+  parent?: Maybe<EquipmentClassUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput {
+  create?: Maybe<
+    | EquipmentClassPropertyCreateWithoutEquipmentClassInput[]
+    | EquipmentClassPropertyCreateWithoutEquipmentClassInput
+  >;
+  delete?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  connect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  set?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentClassPropertyUpdateWithWhereUniqueWithoutEquipmentClassInput[]
+    | EquipmentClassPropertyUpdateWithWhereUniqueWithoutEquipmentClassInput
+  >;
+  upsert?: Maybe<
+    | EquipmentClassPropertyUpsertWithWhereUniqueWithoutEquipmentClassInput[]
+    | EquipmentClassPropertyUpsertWithWhereUniqueWithoutEquipmentClassInput
+  >;
+  deleteMany?: Maybe<
+    | EquipmentClassPropertyScalarWhereInput[]
+    | EquipmentClassPropertyScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentClassPropertyUpdateManyWithWhereNestedInput[]
+    | EquipmentClassPropertyUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentClassUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    EquipmentPropertyScalarWhereInput[] | EquipmentPropertyScalarWhereInput
+  >;
+  OR?: Maybe<
+    EquipmentPropertyScalarWhereInput[] | EquipmentPropertyScalarWhereInput
+  >;
+  NOT?: Maybe<
+    EquipmentPropertyScalarWhereInput[] | EquipmentPropertyScalarWhereInput
+  >;
+}
+
+export interface EquipmentUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassPropertyUpdateWithoutEquipmentClassDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  parent?: Maybe<EquipmentClassPropertyUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyUpsertWithWhereUniqueWithoutEquipmentInput {
+  where: EquipmentPropertyWhereUniqueInput;
+  update: EquipmentPropertyUpdateWithoutEquipmentDataInput;
+  create: EquipmentPropertyCreateWithoutEquipmentInput;
+}
+
+export interface EquipmentClassPropertyUpdateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentClassPropertyCreateWithoutChildrenInput>;
+  update?: Maybe<EquipmentClassPropertyUpdateWithoutChildrenDataInput>;
+  upsert?: Maybe<EquipmentClassPropertyUpsertWithoutChildrenInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EquipmentClassPropertyWhereUniqueInput>;
+}
+
+export interface EquipmentPropertyUpdateManyWithWhereNestedInput {
+  where: EquipmentPropertyScalarWhereInput;
+  data: EquipmentPropertyUpdateManyDataInput;
+}
+
+export interface EquipmentClassPropertyUpdateWithoutChildrenDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass?: Maybe<
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  >;
+  parent?: Maybe<EquipmentClassPropertyUpdateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyCreateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassCreateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  equipmentClass_properties_every?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipmentClass_properties_some?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipmentClass_properties_none?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipments_every?: Maybe<EquipmentWhereInput>;
+  equipments_some?: Maybe<EquipmentWhereInput>;
+  equipments_none?: Maybe<EquipmentWhereInput>;
+  parent?: Maybe<EquipmentClassWhereInput>;
+  children_every?: Maybe<EquipmentClassWhereInput>;
+  children_some?: Maybe<EquipmentClassWhereInput>;
+  children_none?: Maybe<EquipmentClassWhereInput>;
+  AND?: Maybe<EquipmentClassWhereInput[] | EquipmentClassWhereInput>;
+  OR?: Maybe<EquipmentClassWhereInput[] | EquipmentClassWhereInput>;
+  NOT?: Maybe<EquipmentClassWhereInput[] | EquipmentClassWhereInput>;
+}
+
+export interface EquipmentPropertyCreateWithoutEquipmentInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  parent?: Maybe<EquipmentPropertyCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyUpsertWithWhereUniqueWithoutParentInput {
+  where: EquipmentPropertyWhereUniqueInput;
+  update: EquipmentPropertyUpdateWithoutParentDataInput;
+  create: EquipmentPropertyCreateWithoutParentInput;
+}
+
+export interface EquipmentPropertyCreateWithoutChildrenInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment: EquipmentCreateOneWithoutEquipmentPropertiesInput;
+  parent?: Maybe<EquipmentPropertyCreateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentUpdateManyWithoutEquipmentClassesInput {
+  create?: Maybe<
+    | EquipmentCreateWithoutEquipmentClassesInput[]
+    | EquipmentCreateWithoutEquipmentClassesInput
+  >;
+  delete?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  connect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  set?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  disconnect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  update?: Maybe<
+    | EquipmentUpdateWithWhereUniqueWithoutEquipmentClassesInput[]
+    | EquipmentUpdateWithWhereUniqueWithoutEquipmentClassesInput
+  >;
+  upsert?: Maybe<
+    | EquipmentUpsertWithWhereUniqueWithoutEquipmentClassesInput[]
+    | EquipmentUpsertWithWhereUniqueWithoutEquipmentClassesInput
+  >;
+  deleteMany?: Maybe<EquipmentScalarWhereInput[] | EquipmentScalarWhereInput>;
+  updateMany?: Maybe<
+    | EquipmentUpdateManyWithWhereNestedInput[]
+    | EquipmentUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentCreateWithoutEquipmentPropertiesInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClasses?: Maybe<EquipmentClassCreateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateWithWhereUniqueWithoutEquipmentClassesInput {
+  where: EquipmentWhereUniqueInput;
+  data: EquipmentUpdateWithoutEquipmentClassesDataInput;
+}
+
+export interface EquipmentClassCreateWithoutEquipmentsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  >;
+  parent?: Maybe<EquipmentClassCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateWithoutEquipmentClassesDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyUpdateManyWithoutEquipmentInput>;
+  parent?: Maybe<EquipmentUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassPropertyCreateWithoutEquipmentClassInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  parent?: Maybe<EquipmentClassPropertyCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentCreateWithoutChildrenInput>;
+  update?: Maybe<EquipmentUpdateWithoutChildrenDataInput>;
+  upsert?: Maybe<EquipmentUpsertWithoutChildrenInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentClassPropertyCreateWithoutChildrenInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  parent?: Maybe<EquipmentClassPropertyCreateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentUpdateWithoutChildrenDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyUpdateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassUpdateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentUpdateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentClassCreateWithoutEquipmentClass_propertiesInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpsertWithoutChildrenInput {
+  update: EquipmentUpdateWithoutChildrenDataInput;
+  create: EquipmentCreateWithoutChildrenInput;
+}
+
+export interface EquipmentCreateWithoutEquipmentClassesInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyCreateManyWithoutEquipmentInput>;
+  parent?: Maybe<EquipmentCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateManyWithoutParentInput {
+  create?: Maybe<
+    EquipmentCreateWithoutParentInput[] | EquipmentCreateWithoutParentInput
+  >;
+  delete?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  connect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  set?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  disconnect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+  update?: Maybe<
+    | EquipmentUpdateWithWhereUniqueWithoutParentInput[]
+    | EquipmentUpdateWithWhereUniqueWithoutParentInput
+  >;
+  upsert?: Maybe<
+    | EquipmentUpsertWithWhereUniqueWithoutParentInput[]
+    | EquipmentUpsertWithWhereUniqueWithoutParentInput
+  >;
+  deleteMany?: Maybe<EquipmentScalarWhereInput[] | EquipmentScalarWhereInput>;
+  updateMany?: Maybe<
+    | EquipmentUpdateManyWithWhereNestedInput[]
+    | EquipmentUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentCreateWithoutChildrenInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyCreateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassCreateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentCreateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentUpdateWithWhereUniqueWithoutParentInput {
+  where: EquipmentWhereUniqueInput;
+  data: EquipmentUpdateWithoutParentDataInput;
+}
+
+export interface EquipmentCreateWithoutParentInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyCreateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassCreateManyWithoutEquipmentsInput>;
+  children?: Maybe<EquipmentCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateWithoutParentDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyUpdateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassUpdateManyWithoutEquipmentsInput>;
+  children?: Maybe<EquipmentUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassCreateWithoutChildrenInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassCreateOneWithoutChildrenInput>;
+}
+
+export interface EquipmentUpsertWithWhereUniqueWithoutParentInput {
+  where: EquipmentWhereUniqueInput;
+  update: EquipmentUpdateWithoutParentDataInput;
+  create: EquipmentCreateWithoutParentInput;
+}
+
+export interface EquipmentClassCreateWithoutParentInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
+  children?: Maybe<EquipmentClassCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<EquipmentScalarWhereInput[] | EquipmentScalarWhereInput>;
+  OR?: Maybe<EquipmentScalarWhereInput[] | EquipmentScalarWhereInput>;
+  NOT?: Maybe<EquipmentScalarWhereInput[] | EquipmentScalarWhereInput>;
+}
+
+export interface EquipmentClassPropertyCreateWithoutParentInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  children?: Maybe<EquipmentClassPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateManyWithWhereNestedInput {
+  where: EquipmentScalarWhereInput;
+  data: EquipmentUpdateManyDataInput;
+}
+
+export interface EquipmentPropertyCreateWithoutParentInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment: EquipmentCreateOneWithoutEquipmentPropertiesInput;
+  children?: Maybe<EquipmentPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateManyDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentPropertyUpdateManyWithoutEquipmentInput {
+  create?: Maybe<
+    | EquipmentPropertyCreateWithoutEquipmentInput[]
+    | EquipmentPropertyCreateWithoutEquipmentInput
+  >;
+  delete?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  connect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  set?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentPropertyUpdateWithWhereUniqueWithoutEquipmentInput[]
+    | EquipmentPropertyUpdateWithWhereUniqueWithoutEquipmentInput
+  >;
+  upsert?: Maybe<
+    | EquipmentPropertyUpsertWithWhereUniqueWithoutEquipmentInput[]
+    | EquipmentPropertyUpsertWithWhereUniqueWithoutEquipmentInput
+  >;
+  deleteMany?: Maybe<
+    EquipmentPropertyScalarWhereInput[] | EquipmentPropertyScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentPropertyUpdateManyWithWhereNestedInput[]
+    | EquipmentPropertyUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentUpsertWithWhereUniqueWithoutEquipmentClassesInput {
+  where: EquipmentWhereUniqueInput;
+  update: EquipmentUpdateWithoutEquipmentClassesDataInput;
+  create: EquipmentCreateWithoutEquipmentClassesInput;
+}
+
+export interface EquipmentPropertyWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  equipment?: Maybe<EquipmentWhereInput>;
+  parent?: Maybe<EquipmentPropertyWhereInput>;
+  children_every?: Maybe<EquipmentPropertyWhereInput>;
+  children_some?: Maybe<EquipmentPropertyWhereInput>;
+  children_none?: Maybe<EquipmentPropertyWhereInput>;
+  AND?: Maybe<EquipmentPropertyWhereInput[] | EquipmentPropertyWhereInput>;
+  OR?: Maybe<EquipmentPropertyWhereInput[] | EquipmentPropertyWhereInput>;
+  NOT?: Maybe<EquipmentPropertyWhereInput[] | EquipmentPropertyWhereInput>;
+}
+
+export interface EquipmentClassUpdateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentClassCreateWithoutChildrenInput>;
+  update?: Maybe<EquipmentClassUpdateWithoutChildrenDataInput>;
+  upsert?: Maybe<EquipmentClassUpsertWithoutChildrenInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<EquipmentClassWhereUniqueInput>;
+}
+
+export interface EquipmentPropertyUpdateManyMutationInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassUpdateWithoutChildrenDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassUpdateOneWithoutChildrenInput>;
+}
+
+export type EquipmentClassWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
+
+export interface EquipmentClassUpsertWithoutChildrenInput {
+  update: EquipmentClassUpdateWithoutChildrenDataInput;
+  create: EquipmentClassCreateWithoutChildrenInput;
+}
+
+export type EquipmentClassPropertyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EquipmentClassUpdateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentClassCreateWithoutParentInput[]
+    | EquipmentClassCreateWithoutParentInput
+  >;
+  delete?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  connect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  set?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentClassUpdateWithWhereUniqueWithoutParentInput[]
+    | EquipmentClassUpdateWithWhereUniqueWithoutParentInput
+  >;
+  upsert?: Maybe<
+    | EquipmentClassUpsertWithWhereUniqueWithoutParentInput[]
+    | EquipmentClassUpsertWithWhereUniqueWithoutParentInput
+  >;
+  deleteMany?: Maybe<
+    EquipmentClassScalarWhereInput[] | EquipmentClassScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentClassUpdateManyWithWhereNestedInput[]
+    | EquipmentClassUpdateManyWithWhereNestedInput
+  >;
+}
+
+export type EquipmentPropertyWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export interface EquipmentClassUpdateWithWhereUniqueWithoutParentInput {
+  where: EquipmentClassWhereUniqueInput;
+  data: EquipmentClassUpdateWithoutParentDataInput;
+}
+
+export interface EquipmentPropertyCreateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentPropertyCreateWithoutChildrenInput>;
+  connect?: Maybe<EquipmentPropertyWhereUniqueInput>;
+}
+
+export interface EquipmentClassUpdateWithoutParentDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
+  children?: Maybe<EquipmentClassUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassCreateManyWithoutEquipmentsInput {
+  create?: Maybe<
+    | EquipmentClassCreateWithoutEquipmentsInput[]
+    | EquipmentClassCreateWithoutEquipmentsInput
+  >;
+  connect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassUpsertWithWhereUniqueWithoutParentInput {
+  where: EquipmentClassWhereUniqueInput;
+  update: EquipmentClassUpdateWithoutParentDataInput;
+  create: EquipmentClassCreateWithoutParentInput;
+}
+
+export interface EquipmentClassPropertyCreateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentClassPropertyCreateWithoutChildrenInput>;
+  connect?: Maybe<EquipmentClassPropertyWhereUniqueInput>;
+}
+
+export interface EquipmentClassScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    EquipmentClassScalarWhereInput[] | EquipmentClassScalarWhereInput
+  >;
+  OR?: Maybe<EquipmentClassScalarWhereInput[] | EquipmentClassScalarWhereInput>;
+  NOT?: Maybe<
+    EquipmentClassScalarWhereInput[] | EquipmentClassScalarWhereInput
+  >;
+}
+
+export interface EquipmentCreateManyWithoutEquipmentClassesInput {
+  create?: Maybe<
+    | EquipmentCreateWithoutEquipmentClassesInput[]
+    | EquipmentCreateWithoutEquipmentClassesInput
+  >;
+  connect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentClassUpdateManyWithWhereNestedInput {
+  where: EquipmentClassScalarWhereInput;
+  data: EquipmentClassUpdateManyDataInput;
+}
+
+export interface EquipmentCreateManyWithoutParentInput {
+  create?: Maybe<
+    EquipmentCreateWithoutParentInput[] | EquipmentCreateWithoutParentInput
+  >;
+  connect?: Maybe<EquipmentWhereUniqueInput[] | EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentClassUpdateManyDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassCreateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentClassCreateWithoutParentInput[]
+    | EquipmentClassCreateWithoutParentInput
+  >;
+  connect?: Maybe<
+    EquipmentClassWhereUniqueInput[] | EquipmentClassWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassUpsertWithoutEquipmentClass_propertiesInput {
+  update: EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput;
+  create: EquipmentClassCreateWithoutEquipmentClass_propertiesInput;
+}
+
+export interface EquipmentPropertyCreateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentPropertyCreateWithoutParentInput[]
+    | EquipmentPropertyCreateWithoutParentInput
+  >;
+  connect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassPropertyUpsertWithoutChildrenInput {
+  update: EquipmentClassPropertyUpdateWithoutChildrenDataInput;
+  create: EquipmentClassPropertyCreateWithoutChildrenInput;
+}
+
+export interface EquipmentWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  equipmentProperties_every?: Maybe<EquipmentPropertyWhereInput>;
+  equipmentProperties_some?: Maybe<EquipmentPropertyWhereInput>;
+  equipmentProperties_none?: Maybe<EquipmentPropertyWhereInput>;
+  equipmentClasses_every?: Maybe<EquipmentClassWhereInput>;
+  equipmentClasses_some?: Maybe<EquipmentClassWhereInput>;
+  equipmentClasses_none?: Maybe<EquipmentClassWhereInput>;
+  parent?: Maybe<EquipmentWhereInput>;
+  children_every?: Maybe<EquipmentWhereInput>;
+  children_some?: Maybe<EquipmentWhereInput>;
+  children_none?: Maybe<EquipmentWhereInput>;
+  AND?: Maybe<EquipmentWhereInput[] | EquipmentWhereInput>;
+  OR?: Maybe<EquipmentWhereInput[] | EquipmentWhereInput>;
+  NOT?: Maybe<EquipmentWhereInput[] | EquipmentWhereInput>;
+}
+
+export interface EquipmentClassPropertyUpdateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentClassPropertyCreateWithoutParentInput[]
+    | EquipmentClassPropertyCreateWithoutParentInput
+  >;
+  delete?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  connect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  set?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentClassPropertyUpdateWithWhereUniqueWithoutParentInput[]
+    | EquipmentClassPropertyUpdateWithWhereUniqueWithoutParentInput
+  >;
+  upsert?: Maybe<
+    | EquipmentClassPropertyUpsertWithWhereUniqueWithoutParentInput[]
+    | EquipmentClassPropertyUpsertWithWhereUniqueWithoutParentInput
+  >;
+  deleteMany?: Maybe<
+    | EquipmentClassPropertyScalarWhereInput[]
+    | EquipmentClassPropertyScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentClassPropertyUpdateManyWithWhereNestedInput[]
+    | EquipmentClassPropertyUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentPropertyCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipment: EquipmentCreateOneWithoutEquipmentPropertiesInput;
+  parent?: Maybe<EquipmentPropertyCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassPropertyUpdateWithWhereUniqueWithoutParentInput {
+  where: EquipmentClassPropertyWhereUniqueInput;
+  data: EquipmentClassPropertyUpdateWithoutParentDataInput;
+}
+
+export interface EquipmentClassCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass_properties?: Maybe<
+    EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  >;
+  equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
+  parent?: Maybe<EquipmentClassCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentClassPropertyUpdateWithoutParentDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass?: Maybe<
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  >;
+  children?: Maybe<EquipmentClassPropertyUpdateManyWithoutParentInput>;
+}
+
+export interface EquipmentPropertyCreateManyWithoutEquipmentInput {
+  create?: Maybe<
+    | EquipmentPropertyCreateWithoutEquipmentInput[]
+    | EquipmentPropertyCreateWithoutEquipmentInput
+  >;
+  connect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassPropertyUpsertWithWhereUniqueWithoutParentInput {
+  where: EquipmentClassPropertyWhereUniqueInput;
+  update: EquipmentClassPropertyUpdateWithoutParentDataInput;
+  create: EquipmentClassPropertyCreateWithoutParentInput;
+}
+
+export interface EquipmentClassPropertyCreateManyWithoutEquipmentClassInput {
+  create?: Maybe<
+    | EquipmentClassPropertyCreateWithoutEquipmentClassInput[]
+    | EquipmentClassPropertyCreateWithoutEquipmentClassInput
+  >;
+  connect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassPropertyScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  code?: Maybe<String>;
+  code_not?: Maybe<String>;
+  code_in?: Maybe<String[] | String>;
+  code_not_in?: Maybe<String[] | String>;
+  code_lt?: Maybe<String>;
+  code_lte?: Maybe<String>;
+  code_gt?: Maybe<String>;
+  code_gte?: Maybe<String>;
+  code_contains?: Maybe<String>;
+  code_not_contains?: Maybe<String>;
+  code_starts_with?: Maybe<String>;
+  code_not_starts_with?: Maybe<String>;
+  code_ends_with?: Maybe<String>;
+  code_not_ends_with?: Maybe<String>;
+  description?: Maybe<String>;
+  description_not?: Maybe<String>;
+  description_in?: Maybe<String[] | String>;
+  description_not_in?: Maybe<String[] | String>;
+  description_lt?: Maybe<String>;
+  description_lte?: Maybe<String>;
+  description_gt?: Maybe<String>;
+  description_gte?: Maybe<String>;
+  description_contains?: Maybe<String>;
+  description_not_contains?: Maybe<String>;
+  description_starts_with?: Maybe<String>;
+  description_not_starts_with?: Maybe<String>;
+  description_ends_with?: Maybe<String>;
+  description_not_ends_with?: Maybe<String>;
+  AND?: Maybe<
+    | EquipmentClassPropertyScalarWhereInput[]
+    | EquipmentClassPropertyScalarWhereInput
+  >;
+  OR?: Maybe<
+    | EquipmentClassPropertyScalarWhereInput[]
+    | EquipmentClassPropertyScalarWhereInput
+  >;
+  NOT?: Maybe<
+    | EquipmentClassPropertyScalarWhereInput[]
+    | EquipmentClassPropertyScalarWhereInput
+  >;
+}
+
+export interface EquipmentCreateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentCreateWithoutChildrenInput>;
+  connect?: Maybe<EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentClassPropertyUpdateManyWithWhereNestedInput {
+  where: EquipmentClassPropertyScalarWhereInput;
+  data: EquipmentClassPropertyUpdateManyDataInput;
+}
+
+export interface EquipmentClassPropertyCreateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentClassPropertyCreateWithoutParentInput[]
+    | EquipmentClassPropertyCreateWithoutParentInput
+  >;
+  connect?: Maybe<
+    | EquipmentClassPropertyWhereUniqueInput[]
+    | EquipmentClassPropertyWhereUniqueInput
+  >;
+}
+
+export interface EquipmentClassPropertyUpdateManyDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<EquipmentClassWhereInput>;
+  AND?: Maybe<
+    | EquipmentClassSubscriptionWhereInput[]
+    | EquipmentClassSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | EquipmentClassSubscriptionWhereInput[]
+    | EquipmentClassSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | EquipmentClassSubscriptionWhereInput[]
+    | EquipmentClassSubscriptionWhereInput
+  >;
+}
+
+export interface EquipmentClassPropertyUpsertWithWhereUniqueWithoutEquipmentClassInput {
+  where: EquipmentClassPropertyWhereUniqueInput;
+  update: EquipmentClassPropertyUpdateWithoutEquipmentClassDataInput;
+  create: EquipmentClassPropertyCreateWithoutEquipmentClassInput;
+}
+
+export interface EquipmentPropertyUpdateManyDataInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+}
+
+export interface EquipmentClassUpsertWithWhereUniqueWithoutEquipmentsInput {
+  where: EquipmentClassWhereUniqueInput;
+  update: EquipmentClassUpdateWithoutEquipmentsDataInput;
+  create: EquipmentClassCreateWithoutEquipmentsInput;
+}
+
+export interface EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput {
+  create?: Maybe<EquipmentClassCreateWithoutEquipmentClass_propertiesInput>;
+  connect?: Maybe<EquipmentClassWhereUniqueInput>;
+}
+
+export interface EquipmentPropertyUpdateWithWhereUniqueWithoutParentInput {
+  where: EquipmentPropertyWhereUniqueInput;
+  data: EquipmentPropertyUpdateWithoutParentDataInput;
+}
+
+export interface EquipmentPropertyUpdateManyWithoutParentInput {
+  create?: Maybe<
+    | EquipmentPropertyCreateWithoutParentInput[]
+    | EquipmentPropertyCreateWithoutParentInput
+  >;
+  delete?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  connect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  set?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  disconnect?: Maybe<
+    EquipmentPropertyWhereUniqueInput[] | EquipmentPropertyWhereUniqueInput
+  >;
+  update?: Maybe<
+    | EquipmentPropertyUpdateWithWhereUniqueWithoutParentInput[]
+    | EquipmentPropertyUpdateWithWhereUniqueWithoutParentInput
+  >;
+  upsert?: Maybe<
+    | EquipmentPropertyUpsertWithWhereUniqueWithoutParentInput[]
+    | EquipmentPropertyUpsertWithWhereUniqueWithoutParentInput
+  >;
+  deleteMany?: Maybe<
+    EquipmentPropertyScalarWhereInput[] | EquipmentPropertyScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | EquipmentPropertyUpdateManyWithWhereNestedInput[]
+    | EquipmentPropertyUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface EquipmentPropertyUpsertWithoutChildrenInput {
+  update: EquipmentPropertyUpdateWithoutChildrenDataInput;
+  create: EquipmentPropertyCreateWithoutChildrenInput;
+}
+
+export interface EquipmentUpsertWithoutEquipmentPropertiesInput {
+  update: EquipmentUpdateWithoutEquipmentPropertiesDataInput;
+  create: EquipmentCreateWithoutEquipmentPropertiesInput;
+}
+
+export interface EquipmentClassCreateOneWithoutChildrenInput {
+  create?: Maybe<EquipmentClassCreateWithoutChildrenInput>;
+  connect?: Maybe<EquipmentClassWhereUniqueInput>;
+}
+
+export interface EquipmentCreateOneWithoutEquipmentPropertiesInput {
+  create?: Maybe<EquipmentCreateWithoutEquipmentPropertiesInput>;
+  connect?: Maybe<EquipmentWhereUniqueInput>;
+}
+
+export interface EquipmentClassPropertyCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  parent?: Maybe<EquipmentClassPropertyCreateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentClassPropertyCreateManyWithoutParentInput>;
+}
+
+export interface EquipmentUpdateInput {
+  name?: Maybe<String>;
+  code?: Maybe<String>;
+  description?: Maybe<String>;
+  equipmentProperties?: Maybe<EquipmentPropertyUpdateManyWithoutEquipmentInput>;
+  equipmentClasses?: Maybe<EquipmentClassUpdateManyWithoutEquipmentsInput>;
+  parent?: Maybe<EquipmentUpdateOneWithoutChildrenInput>;
+  children?: Maybe<EquipmentUpdateManyWithoutParentInput>;
+}
 
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
+export interface EquipmentPropertyPreviousValues {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentPropertyPreviousValuesPromise
+  extends Promise<EquipmentPropertyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface EquipmentPropertyPreviousValuesSubscription
+  extends Promise<AsyncIterator<EquipmentPropertyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateEquipment {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateEquipmentPromise
+  extends Promise<AggregateEquipment>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateEquipmentSubscription
+  extends Promise<AsyncIterator<AggregateEquipment>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface BatchPayload {
-  count: Long;
+export interface EquipmentClassPropertySubscriptionPayload {
+  mutation: MutationType;
+  node: EquipmentClassProperty;
+  updatedFields: String[];
+  previousValues: EquipmentClassPropertyPreviousValues;
 }
 
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
+export interface EquipmentClassPropertySubscriptionPayloadPromise
+  extends Promise<EquipmentClassPropertySubscriptionPayload>,
     Fragmentable {
-  count: () => Promise<Long>;
+  mutation: () => Promise<MutationType>;
+  node: <T = EquipmentClassPropertyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EquipmentClassPropertyPreviousValuesPromise>() => T;
 }
 
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
+export interface EquipmentClassPropertySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EquipmentClassPropertySubscriptionPayload>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EquipmentClassPropertySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EquipmentClassPropertyPreviousValuesSubscription>() => T;
 }
 
-export interface UserPreviousValues {
-  id: ID_Output;
-  name: String;
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
-export interface UserEdge {
-  node: User;
+export interface EquipmentEdge {
+  node: Equipment;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface EquipmentEdgePromise
+  extends Promise<EquipmentEdge>,
+    Fragmentable {
+  node: <T = EquipmentPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface EquipmentEdgeSubscription
+  extends Promise<AsyncIterator<EquipmentEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = EquipmentSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface User {
+export interface EquipmentProperty {
   id: ID_Output;
   name: String;
+  code?: String;
+  description?: String;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
+export interface EquipmentPropertyPromise
+  extends Promise<EquipmentProperty>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipment: <T = EquipmentPromise>() => T;
+  parent: <T = EquipmentPropertyPromise>() => T;
+  children: <T = FragmentableArray<EquipmentProperty>>(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface EquipmentPropertySubscription
+  extends Promise<AsyncIterator<EquipmentProperty>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  equipment: <T = EquipmentSubscription>() => T;
+  parent: <T = EquipmentPropertySubscription>() => T;
+  children: <T = Promise<AsyncIterator<EquipmentPropertySubscription>>>(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface UserNullablePromise
-  extends Promise<User | null>,
+export interface EquipmentPropertyNullablePromise
+  extends Promise<EquipmentProperty | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipment: <T = EquipmentPromise>() => T;
+  parent: <T = EquipmentPropertyPromise>() => T;
+  children: <T = FragmentableArray<EquipmentProperty>>(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+export interface EquipmentClass {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface EquipmentClassPromise
+  extends Promise<EquipmentClass>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentClass_properties: <
+    T = FragmentableArray<EquipmentClassProperty>
+  >(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipments: <T = FragmentableArray<Equipment>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentClassPromise>() => T;
+  children: <T = FragmentableArray<EquipmentClass>>(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface EquipmentClassSubscription
+  extends Promise<AsyncIterator<EquipmentClass>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  equipmentClass_properties: <
+    T = Promise<AsyncIterator<EquipmentClassPropertySubscription>>
+  >(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipments: <T = Promise<AsyncIterator<EquipmentSubscription>>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentClassSubscription>() => T;
+  children: <T = Promise<AsyncIterator<EquipmentClassSubscription>>>(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentClassNullablePromise
+  extends Promise<EquipmentClass | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentClass_properties: <
+    T = FragmentableArray<EquipmentClassProperty>
+  >(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipments: <T = FragmentableArray<Equipment>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentClassPromise>() => T;
+  children: <T = FragmentableArray<EquipmentClass>>(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentPropertyEdge {
+  node: EquipmentProperty;
+  cursor: String;
+}
+
+export interface EquipmentPropertyEdgePromise
+  extends Promise<EquipmentPropertyEdge>,
+    Fragmentable {
+  node: <T = EquipmentPropertyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EquipmentPropertyEdgeSubscription
+  extends Promise<AsyncIterator<EquipmentPropertyEdge>>,
+    Fragmentable {
+  node: <T = EquipmentPropertySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface PageInfo {
@@ -332,10 +2212,542 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
+export interface AggregateEquipmentClassProperty {
+  count: Int;
+}
+
+export interface AggregateEquipmentClassPropertyPromise
+  extends Promise<AggregateEquipmentClassProperty>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEquipmentClassPropertySubscription
+  extends Promise<AsyncIterator<AggregateEquipmentClassProperty>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EquipmentConnection {
+  pageInfo: PageInfo;
+  edges: EquipmentEdge[];
+}
+
+export interface EquipmentConnectionPromise
+  extends Promise<EquipmentConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EquipmentEdge>>() => T;
+  aggregate: <T = AggregateEquipmentPromise>() => T;
+}
+
+export interface EquipmentConnectionSubscription
+  extends Promise<AsyncIterator<EquipmentConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EquipmentEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEquipmentSubscription>() => T;
+}
+
+export interface EquipmentPropertySubscriptionPayload {
+  mutation: MutationType;
+  node: EquipmentProperty;
+  updatedFields: String[];
+  previousValues: EquipmentPropertyPreviousValues;
+}
+
+export interface EquipmentPropertySubscriptionPayloadPromise
+  extends Promise<EquipmentPropertySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EquipmentPropertyPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EquipmentPropertyPreviousValuesPromise>() => T;
+}
+
+export interface EquipmentPropertySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EquipmentPropertySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EquipmentPropertySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EquipmentPropertyPreviousValuesSubscription>() => T;
+}
+
+export interface Equipment {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentPromise extends Promise<Equipment>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentProperties: <T = FragmentableArray<EquipmentProperty>>(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipmentClasses: <T = FragmentableArray<EquipmentClass>>(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentPromise>() => T;
+  children: <T = FragmentableArray<Equipment>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentSubscription
+  extends Promise<AsyncIterator<Equipment>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  equipmentProperties: <
+    T = Promise<AsyncIterator<EquipmentPropertySubscription>>
+  >(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipmentClasses: <
+    T = Promise<AsyncIterator<EquipmentClassSubscription>>
+  >(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentSubscription>() => T;
+  children: <T = Promise<AsyncIterator<EquipmentSubscription>>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentNullablePromise
+  extends Promise<Equipment | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentProperties: <T = FragmentableArray<EquipmentProperty>>(args?: {
+    where?: EquipmentPropertyWhereInput;
+    orderBy?: EquipmentPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  equipmentClasses: <T = FragmentableArray<EquipmentClass>>(args?: {
+    where?: EquipmentClassWhereInput;
+    orderBy?: EquipmentClassOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  parent: <T = EquipmentPromise>() => T;
+  children: <T = FragmentableArray<Equipment>>(args?: {
+    where?: EquipmentWhereInput;
+    orderBy?: EquipmentOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentClassPropertyConnection {
+  pageInfo: PageInfo;
+  edges: EquipmentClassPropertyEdge[];
+}
+
+export interface EquipmentClassPropertyConnectionPromise
+  extends Promise<EquipmentClassPropertyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EquipmentClassPropertyEdge>>() => T;
+  aggregate: <T = AggregateEquipmentClassPropertyPromise>() => T;
+}
+
+export interface EquipmentClassPropertyConnectionSubscription
+  extends Promise<AsyncIterator<EquipmentClassPropertyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<EquipmentClassPropertyEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateEquipmentClassPropertySubscription>() => T;
+}
+
+export interface EquipmentSubscriptionPayload {
+  mutation: MutationType;
+  node: Equipment;
+  updatedFields: String[];
+  previousValues: EquipmentPreviousValues;
+}
+
+export interface EquipmentSubscriptionPayloadPromise
+  extends Promise<EquipmentSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EquipmentPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EquipmentPreviousValuesPromise>() => T;
+}
+
+export interface EquipmentSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EquipmentSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EquipmentSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EquipmentPreviousValuesSubscription>() => T;
+}
+
+export interface EquipmentClassEdge {
+  node: EquipmentClass;
+  cursor: String;
+}
+
+export interface EquipmentClassEdgePromise
+  extends Promise<EquipmentClassEdge>,
+    Fragmentable {
+  node: <T = EquipmentClassPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EquipmentClassEdgeSubscription
+  extends Promise<AsyncIterator<EquipmentClassEdge>>,
+    Fragmentable {
+  node: <T = EquipmentClassSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EquipmentPreviousValues {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentPreviousValuesPromise
+  extends Promise<EquipmentPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface EquipmentPreviousValuesSubscription
+  extends Promise<AsyncIterator<EquipmentPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateEquipmentProperty {
+  count: Int;
+}
+
+export interface AggregateEquipmentPropertyPromise
+  extends Promise<AggregateEquipmentProperty>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEquipmentPropertySubscription
+  extends Promise<AsyncIterator<AggregateEquipmentProperty>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface EquipmentClassProperty {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentClassPropertyPromise
+  extends Promise<EquipmentClassProperty>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentClass: <T = EquipmentClassPromise>() => T;
+  parent: <T = EquipmentClassPropertyPromise>() => T;
+  children: <T = FragmentableArray<EquipmentClassProperty>>(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentClassPropertySubscription
+  extends Promise<AsyncIterator<EquipmentClassProperty>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  equipmentClass: <T = EquipmentClassSubscription>() => T;
+  parent: <T = EquipmentClassPropertySubscription>() => T;
+  children: <
+    T = Promise<AsyncIterator<EquipmentClassPropertySubscription>>
+  >(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentClassPropertyNullablePromise
+  extends Promise<EquipmentClassProperty | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+  equipmentClass: <T = EquipmentClassPromise>() => T;
+  parent: <T = EquipmentClassPropertyPromise>() => T;
+  children: <T = FragmentableArray<EquipmentClassProperty>>(args?: {
+    where?: EquipmentClassPropertyWhereInput;
+    orderBy?: EquipmentClassPropertyOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+}
+
+export interface EquipmentClassPreviousValues {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentClassPreviousValuesPromise
+  extends Promise<EquipmentClassPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface EquipmentClassPreviousValuesSubscription
+  extends Promise<AsyncIterator<EquipmentClassPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EquipmentClassSubscriptionPayload {
+  mutation: MutationType;
+  node: EquipmentClass;
+  updatedFields: String[];
+  previousValues: EquipmentClassPreviousValues;
+}
+
+export interface EquipmentClassSubscriptionPayloadPromise
+  extends Promise<EquipmentClassSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = EquipmentClassPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = EquipmentClassPreviousValuesPromise>() => T;
+}
+
+export interface EquipmentClassSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<EquipmentClassSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = EquipmentClassSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = EquipmentClassPreviousValuesSubscription>() => T;
+}
+
+export interface EquipmentClassPropertyPreviousValues {
+  id: ID_Output;
+  name: String;
+  code?: String;
+  description?: String;
+}
+
+export interface EquipmentClassPropertyPreviousValuesPromise
+  extends Promise<EquipmentClassPropertyPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  code: () => Promise<String>;
+  description: () => Promise<String>;
+}
+
+export interface EquipmentClassPropertyPreviousValuesSubscription
+  extends Promise<AsyncIterator<EquipmentClassPropertyPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  code: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EquipmentClassPropertyEdge {
+  node: EquipmentClassProperty;
+  cursor: String;
+}
+
+export interface EquipmentClassPropertyEdgePromise
+  extends Promise<EquipmentClassPropertyEdge>,
+    Fragmentable {
+  node: <T = EquipmentClassPropertyPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EquipmentClassPropertyEdgeSubscription
+  extends Promise<AsyncIterator<EquipmentClassPropertyEdge>>,
+    Fragmentable {
+  node: <T = EquipmentClassPropertySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface EquipmentPropertyConnection {
+  pageInfo: PageInfo;
+  edges: EquipmentPropertyEdge[];
+}
+
+export interface EquipmentPropertyConnectionPromise
+  extends Promise<EquipmentPropertyConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EquipmentPropertyEdge>>() => T;
+  aggregate: <T = AggregateEquipmentPropertyPromise>() => T;
+}
+
+export interface EquipmentPropertyConnectionSubscription
+  extends Promise<AsyncIterator<EquipmentPropertyConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EquipmentPropertyEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEquipmentPropertySubscription>() => T;
+}
+
+export interface EquipmentClassConnection {
+  pageInfo: PageInfo;
+  edges: EquipmentClassEdge[];
+}
+
+export interface EquipmentClassConnectionPromise
+  extends Promise<EquipmentClassConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EquipmentClassEdge>>() => T;
+  aggregate: <T = AggregateEquipmentClassPromise>() => T;
+}
+
+export interface EquipmentClassConnectionSubscription
+  extends Promise<AsyncIterator<EquipmentClassConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EquipmentClassEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEquipmentClassSubscription>() => T;
+}
+
+export interface AggregateEquipmentClass {
+  count: Int;
+}
+
+export interface AggregateEquipmentClassPromise
+  extends Promise<AggregateEquipmentClass>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEquipmentClassSubscription
+  extends Promise<AsyncIterator<AggregateEquipmentClass>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Boolean` scalar type represents `true` or `false`.
 */
-export type String = string;
+export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
 
 export type Long = string;
 
@@ -346,14 +2758,9 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
-
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export type String = string;
 
 /**
  * Model Metadata
@@ -361,7 +2768,23 @@ export type Boolean = boolean;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "EquipmentClass",
+    embedded: false
+  },
+  {
+    name: "EquipmentClassProperty",
+    embedded: false
+  },
+  {
+    name: "Equipment",
+    embedded: false
+  },
+  {
+    name: "EquipmentProperty",
+    embedded: false
+  },
+  {
+    name: "EquipmentClassMapping",
     embedded: false
   }
 ];
