@@ -3,7 +3,7 @@ type EquipmentClass {
   name: String!
   code: String
   description: String
-  equipmentClass_properties: [EquipmentClassProperty!]
+  equipmentClassProperties: [EquipmentClassProperty!]
   equipments: [Equipment!] @relation(name: "EquipmentClassMapping")
   parent: EquipmentClass @relation(name: "EquipmentClass")
   children: [EquipmentClass!] @relation(name: "EquipmentClass")
