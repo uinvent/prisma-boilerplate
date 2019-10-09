@@ -295,10 +295,10 @@ export type EquipmentWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput {
-  create?: Maybe<EquipmentClassCreateWithoutEquipmentClass_propertiesInput>;
-  update?: Maybe<EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput>;
-  upsert?: Maybe<EquipmentClassUpsertWithoutEquipmentClass_propertiesInput>;
+export interface EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput {
+  create?: Maybe<EquipmentClassCreateWithoutEquipmentClassPropertiesInput>;
+  update?: Maybe<EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput>;
+  upsert?: Maybe<EquipmentClassUpsertWithoutEquipmentClassPropertiesInput>;
   connect?: Maybe<EquipmentClassWhereUniqueInput>;
 }
 
@@ -396,7 +396,7 @@ export interface EquipmentPropertyUpdateWithoutEquipmentDataInput {
   children?: Maybe<EquipmentPropertyUpdateManyWithoutParentInput>;
 }
 
-export interface EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput {
+export interface EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   description?: Maybe<String>;
@@ -554,7 +554,7 @@ export interface EquipmentClassPropertyUpdateInput {
   code?: Maybe<String>;
   description?: Maybe<String>;
   equipmentClass?: Maybe<
-    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   >;
   parent?: Maybe<EquipmentClassPropertyUpdateOneWithoutChildrenInput>;
   children?: Maybe<EquipmentClassPropertyUpdateManyWithoutParentInput>;
@@ -564,7 +564,7 @@ export interface EquipmentClassUpdateWithoutEquipmentsDataInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   >;
   parent?: Maybe<EquipmentClassUpdateOneWithoutChildrenInput>;
@@ -620,7 +620,7 @@ export interface EquipmentClassUpdateInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
@@ -735,7 +735,7 @@ export interface EquipmentClassPropertyUpdateWithoutChildrenDataInput {
   code?: Maybe<String>;
   description?: Maybe<String>;
   equipmentClass?: Maybe<
-    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   >;
   parent?: Maybe<EquipmentClassPropertyUpdateOneWithoutChildrenInput>;
 }
@@ -808,9 +808,9 @@ export interface EquipmentClassWhereInput {
   description_not_starts_with?: Maybe<String>;
   description_ends_with?: Maybe<String>;
   description_not_ends_with?: Maybe<String>;
-  equipmentClass_properties_every?: Maybe<EquipmentClassPropertyWhereInput>;
-  equipmentClass_properties_some?: Maybe<EquipmentClassPropertyWhereInput>;
-  equipmentClass_properties_none?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipmentClassProperties_every?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipmentClassProperties_some?: Maybe<EquipmentClassPropertyWhereInput>;
+  equipmentClassProperties_none?: Maybe<EquipmentClassPropertyWhereInput>;
   equipments_every?: Maybe<EquipmentWhereInput>;
   equipments_some?: Maybe<EquipmentWhereInput>;
   equipments_none?: Maybe<EquipmentWhereInput>;
@@ -891,7 +891,7 @@ export interface EquipmentClassCreateWithoutEquipmentsInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   >;
   parent?: Maybe<EquipmentClassCreateOneWithoutChildrenInput>;
@@ -930,7 +930,7 @@ export interface EquipmentClassPropertyCreateWithoutChildrenInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput;
   parent?: Maybe<EquipmentClassPropertyCreateOneWithoutChildrenInput>;
 }
 
@@ -943,7 +943,7 @@ export interface EquipmentUpdateWithoutChildrenDataInput {
   parent?: Maybe<EquipmentUpdateOneWithoutChildrenInput>;
 }
 
-export interface EquipmentClassCreateWithoutEquipmentClass_propertiesInput {
+export interface EquipmentClassCreateWithoutEquipmentClassPropertiesInput {
   id?: Maybe<ID_Input>;
   name: String;
   code?: Maybe<String>;
@@ -1030,7 +1030,7 @@ export interface EquipmentClassCreateWithoutChildrenInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
@@ -1048,7 +1048,7 @@ export interface EquipmentClassCreateWithoutParentInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
@@ -1122,7 +1122,7 @@ export interface EquipmentClassPropertyCreateWithoutParentInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput;
   children?: Maybe<EquipmentClassPropertyCreateManyWithoutParentInput>;
 }
 
@@ -1272,7 +1272,7 @@ export interface EquipmentClassUpdateWithoutChildrenDataInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
@@ -1344,7 +1344,7 @@ export interface EquipmentClassUpdateWithoutParentDataInput {
   name?: Maybe<String>;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentUpdateManyWithoutEquipmentClassesInput>;
@@ -1474,9 +1474,9 @@ export interface EquipmentClassCreateManyWithoutParentInput {
   >;
 }
 
-export interface EquipmentClassUpsertWithoutEquipmentClass_propertiesInput {
-  update: EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput;
-  create: EquipmentClassCreateWithoutEquipmentClass_propertiesInput;
+export interface EquipmentClassUpsertWithoutEquipmentClassPropertiesInput {
+  update: EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput;
+  create: EquipmentClassCreateWithoutEquipmentClassPropertiesInput;
 }
 
 export interface EquipmentPropertyCreateManyWithoutParentInput {
@@ -1625,7 +1625,7 @@ export interface EquipmentClassCreateInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass_properties?: Maybe<
+  equipmentClassProperties?: Maybe<
     EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   >;
   equipments?: Maybe<EquipmentCreateManyWithoutEquipmentClassesInput>;
@@ -1638,7 +1638,7 @@ export interface EquipmentClassPropertyUpdateWithoutParentDataInput {
   code?: Maybe<String>;
   description?: Maybe<String>;
   equipmentClass?: Maybe<
-    EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+    EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   >;
   children?: Maybe<EquipmentClassPropertyUpdateManyWithoutParentInput>;
 }
@@ -1806,8 +1806,8 @@ export interface EquipmentClassUpsertWithWhereUniqueWithoutEquipmentsInput {
   create: EquipmentClassCreateWithoutEquipmentsInput;
 }
 
-export interface EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput {
-  create?: Maybe<EquipmentClassCreateWithoutEquipmentClass_propertiesInput>;
+export interface EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput {
+  create?: Maybe<EquipmentClassCreateWithoutEquipmentClassPropertiesInput>;
   connect?: Maybe<EquipmentClassWhereUniqueInput>;
 }
 
@@ -1875,7 +1875,7 @@ export interface EquipmentClassPropertyCreateInput {
   name: String;
   code?: Maybe<String>;
   description?: Maybe<String>;
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput;
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput;
   parent?: Maybe<EquipmentClassPropertyCreateOneWithoutChildrenInput>;
   children?: Maybe<EquipmentClassPropertyCreateManyWithoutParentInput>;
 }
@@ -2060,7 +2060,7 @@ export interface EquipmentClassPromise
   name: () => Promise<String>;
   code: () => Promise<String>;
   description: () => Promise<String>;
-  equipmentClass_properties: <
+  equipmentClassProperties: <
     T = FragmentableArray<EquipmentClassProperty>
   >(args?: {
     where?: EquipmentClassPropertyWhereInput;
@@ -2099,7 +2099,7 @@ export interface EquipmentClassSubscription
   name: () => Promise<AsyncIterator<String>>;
   code: () => Promise<AsyncIterator<String>>;
   description: () => Promise<AsyncIterator<String>>;
-  equipmentClass_properties: <
+  equipmentClassProperties: <
     T = Promise<AsyncIterator<EquipmentClassPropertySubscription>>
   >(args?: {
     where?: EquipmentClassPropertyWhereInput;
@@ -2138,7 +2138,7 @@ export interface EquipmentClassNullablePromise
   name: () => Promise<String>;
   code: () => Promise<String>;
   description: () => Promise<String>;
-  equipmentClass_properties: <
+  equipmentClassProperties: <
     T = FragmentableArray<EquipmentClassProperty>
   >(args?: {
     where?: EquipmentClassPropertyWhereInput;

@@ -38,7 +38,7 @@ type EquipmentClass {
   name: String!
   code: String
   description: String
-  equipmentClass_properties(where: EquipmentClassPropertyWhereInput, orderBy: EquipmentClassPropertyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EquipmentClassProperty!]
+  equipmentClassProperties(where: EquipmentClassPropertyWhereInput, orderBy: EquipmentClassPropertyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EquipmentClassProperty!]
   equipments(where: EquipmentWhereInput, orderBy: EquipmentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Equipment!]
   parent: EquipmentClass
   children(where: EquipmentClassWhereInput, orderBy: EquipmentClassOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EquipmentClass!]
@@ -55,7 +55,7 @@ input EquipmentClassCreateInput {
   name: String!
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   equipments: EquipmentCreateManyWithoutEquipmentClassesInput
   parent: EquipmentClassCreateOneWithoutChildrenInput
   children: EquipmentClassCreateManyWithoutParentInput
@@ -76,8 +76,8 @@ input EquipmentClassCreateOneWithoutChildrenInput {
   connect: EquipmentClassWhereUniqueInput
 }
 
-input EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput {
-  create: EquipmentClassCreateWithoutEquipmentClass_propertiesInput
+input EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput {
+  create: EquipmentClassCreateWithoutEquipmentClassPropertiesInput
   connect: EquipmentClassWhereUniqueInput
 }
 
@@ -86,12 +86,12 @@ input EquipmentClassCreateWithoutChildrenInput {
   name: String!
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   equipments: EquipmentCreateManyWithoutEquipmentClassesInput
   parent: EquipmentClassCreateOneWithoutChildrenInput
 }
 
-input EquipmentClassCreateWithoutEquipmentClass_propertiesInput {
+input EquipmentClassCreateWithoutEquipmentClassPropertiesInput {
   id: ID
   name: String!
   code: String
@@ -106,7 +106,7 @@ input EquipmentClassCreateWithoutEquipmentsInput {
   name: String!
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   parent: EquipmentClassCreateOneWithoutChildrenInput
   children: EquipmentClassCreateManyWithoutParentInput
 }
@@ -116,7 +116,7 @@ input EquipmentClassCreateWithoutParentInput {
   name: String!
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyCreateManyWithoutEquipmentClassInput
   equipments: EquipmentCreateManyWithoutEquipmentClassesInput
   children: EquipmentClassCreateManyWithoutParentInput
 }
@@ -165,7 +165,7 @@ input EquipmentClassPropertyCreateInput {
   name: String!
   code: String
   description: String
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput!
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput!
   parent: EquipmentClassPropertyCreateOneWithoutChildrenInput
   children: EquipmentClassPropertyCreateManyWithoutParentInput
 }
@@ -190,7 +190,7 @@ input EquipmentClassPropertyCreateWithoutChildrenInput {
   name: String!
   code: String
   description: String
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput!
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput!
   parent: EquipmentClassPropertyCreateOneWithoutChildrenInput
 }
 
@@ -208,7 +208,7 @@ input EquipmentClassPropertyCreateWithoutParentInput {
   name: String!
   code: String
   description: String
-  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClass_propertiesInput!
+  equipmentClass: EquipmentClassCreateOneWithoutEquipmentClassPropertiesInput!
   children: EquipmentClassPropertyCreateManyWithoutParentInput
 }
 
@@ -319,7 +319,7 @@ input EquipmentClassPropertyUpdateInput {
   name: String
   code: String
   description: String
-  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   parent: EquipmentClassPropertyUpdateOneWithoutChildrenInput
   children: EquipmentClassPropertyUpdateManyWithoutParentInput
 }
@@ -378,7 +378,7 @@ input EquipmentClassPropertyUpdateWithoutChildrenDataInput {
   name: String
   code: String
   description: String
-  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   parent: EquipmentClassPropertyUpdateOneWithoutChildrenInput
 }
 
@@ -394,7 +394,7 @@ input EquipmentClassPropertyUpdateWithoutParentDataInput {
   name: String
   code: String
   description: String
-  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput
+  equipmentClass: EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput
   children: EquipmentClassPropertyUpdateManyWithoutParentInput
 }
 
@@ -580,7 +580,7 @@ input EquipmentClassUpdateInput {
   name: String
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   equipments: EquipmentUpdateManyWithoutEquipmentClassesInput
   parent: EquipmentClassUpdateOneWithoutChildrenInput
   children: EquipmentClassUpdateManyWithoutParentInput
@@ -627,10 +627,10 @@ input EquipmentClassUpdateManyWithWhereNestedInput {
   data: EquipmentClassUpdateManyDataInput!
 }
 
-input EquipmentClassUpdateOneRequiredWithoutEquipmentClass_propertiesInput {
-  create: EquipmentClassCreateWithoutEquipmentClass_propertiesInput
-  update: EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput
-  upsert: EquipmentClassUpsertWithoutEquipmentClass_propertiesInput
+input EquipmentClassUpdateOneRequiredWithoutEquipmentClassPropertiesInput {
+  create: EquipmentClassCreateWithoutEquipmentClassPropertiesInput
+  update: EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput
+  upsert: EquipmentClassUpsertWithoutEquipmentClassPropertiesInput
   connect: EquipmentClassWhereUniqueInput
 }
 
@@ -647,12 +647,12 @@ input EquipmentClassUpdateWithoutChildrenDataInput {
   name: String
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   equipments: EquipmentUpdateManyWithoutEquipmentClassesInput
   parent: EquipmentClassUpdateOneWithoutChildrenInput
 }
 
-input EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput {
+input EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput {
   name: String
   code: String
   description: String
@@ -665,7 +665,7 @@ input EquipmentClassUpdateWithoutEquipmentsDataInput {
   name: String
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   parent: EquipmentClassUpdateOneWithoutChildrenInput
   children: EquipmentClassUpdateManyWithoutParentInput
 }
@@ -674,7 +674,7 @@ input EquipmentClassUpdateWithoutParentDataInput {
   name: String
   code: String
   description: String
-  equipmentClass_properties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
+  equipmentClassProperties: EquipmentClassPropertyUpdateManyWithoutEquipmentClassInput
   equipments: EquipmentUpdateManyWithoutEquipmentClassesInput
   children: EquipmentClassUpdateManyWithoutParentInput
 }
@@ -694,9 +694,9 @@ input EquipmentClassUpsertWithoutChildrenInput {
   create: EquipmentClassCreateWithoutChildrenInput!
 }
 
-input EquipmentClassUpsertWithoutEquipmentClass_propertiesInput {
-  update: EquipmentClassUpdateWithoutEquipmentClass_propertiesDataInput!
-  create: EquipmentClassCreateWithoutEquipmentClass_propertiesInput!
+input EquipmentClassUpsertWithoutEquipmentClassPropertiesInput {
+  update: EquipmentClassUpdateWithoutEquipmentClassPropertiesDataInput!
+  create: EquipmentClassCreateWithoutEquipmentClassPropertiesInput!
 }
 
 input EquipmentClassUpsertWithWhereUniqueWithoutEquipmentsInput {
@@ -768,9 +768,9 @@ input EquipmentClassWhereInput {
   description_not_starts_with: String
   description_ends_with: String
   description_not_ends_with: String
-  equipmentClass_properties_every: EquipmentClassPropertyWhereInput
-  equipmentClass_properties_some: EquipmentClassPropertyWhereInput
-  equipmentClass_properties_none: EquipmentClassPropertyWhereInput
+  equipmentClassProperties_every: EquipmentClassPropertyWhereInput
+  equipmentClassProperties_some: EquipmentClassPropertyWhereInput
+  equipmentClassProperties_none: EquipmentClassPropertyWhereInput
   equipments_every: EquipmentWhereInput
   equipments_some: EquipmentWhereInput
   equipments_none: EquipmentWhereInput

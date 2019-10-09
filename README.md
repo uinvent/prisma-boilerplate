@@ -42,3 +42,10 @@ For example, only Equipment has,
 3. parent child relationship with it self
 
 All of these types are written in datamodel.prisma file
+
+## References
+
+For detailed information regarding prisma client write api
+https://www.prisma.io/docs/prisma-client/basic-data-access/writing-data-TYPESCRIPT-rsc7/
+For detailed information regarding prisma client read api
+https://www.prisma.io/docs/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/
