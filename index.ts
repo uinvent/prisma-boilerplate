@@ -1,23 +1,31 @@
-import { prisma } from "./generated/prisma-client";
+import { prisma, Equipment } from "./generated/prisma-client";
 import datamodelInfo from "./generated/nexus-prisma";
 import * as path from "path";
 import { stringArg, idArg } from "nexus";
 import { prismaObjectType, makePrismaSchema } from "nexus-prisma";
 import { GraphQLServer } from "graphql-yoga";
 import { sensor } from "./types/sensor";
+import { equal } from "assert";
 
 const Query = prismaObjectType({
   name: "Query",
   definition(t) {
     t.prismaFields(["equipment", "equipments"]);
-
     // custom fetchEquipment Query
-    t.field("sensors", {
+    t.list.field("sensors", {
       type: "Sensor",
       resolve: async (_, args, ctx) => {
-        const resp = await ctx.prisma.equipment({
+        debugger;
+        const resp = await ctx.prisma.equipments({
           where: { equipmentClasses_some: { code: "sensor" } }
         });
+
+        resp.forEach(element => {
+          element.equipmentClasses = prisma.equipmentClasses({
+            where: { equipments_some: { id: element.id } }
+          });
+        });
+
         return resp.map((eq: Equipment) => ({
           ...eq,
           flow: 2
