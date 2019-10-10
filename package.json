@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./"
   },
   "repository": {
     "type": "git",
@@ -20,10 +21,15 @@
   "homepage": "https://github.com/uinvent/prisma-boilerplate#readme",
   "dependencies": {
     "faker": "^4.1.0",
+    "graphql": "^14.5.8",
+    "graphql-yoga": "^1.18.3",
+    "nexus": "0.12.0-beta.9",
+    "nexus-prisma": "0.3.8",
     "prisma-client-lib": "^1.34.8"
   },
   "devDependencies": {
     "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.3"
   }
 }
