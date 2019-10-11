@@ -7,40 +7,31 @@ import { GraphQLServer } from "graphql-yoga";
 import { sensor } from "./types/sensor";
 import { equal } from "assert";
 
+const sensor_field = {
+  type: "Sensor",
+  resolve: async (_, args, ctx) => {
+    const resp = await ctx.prisma.equipments({
+      where: { equipmentClasses_some: { code: "sensor" } }
+    });
+
+    resp.forEach(element => {
+      element.equipmentClasses = prisma.equipmentClasses({
+        where: { equipments_some: { id: element.id } }
+      });
+    });
+
+    return resp.map((eq: Equipment) => ({
+      ...eq,
+      flow: 2
+    }));
+  }
+};
+
 const Query = prismaObjectType({
   name: "Query",
   definition(t) {
     t.prismaFields(["equipment", "equipments"]);
-    // custom fetchEquipment Query
-    t.list.field("sensors", {
-      type: "Sensor",
-      resolve: async (_, args, ctx) => {
-        debugger;
-        const resp = await ctx.prisma.equipments({
-          where: { equipmentClasses_some: { code: "sensor" } }
-        });
-
-        resp.forEach(element => {
-          element.equipmentClasses = prisma.equipmentClasses({
-            where: { equipments_some: { id: element.id } }
-          });
-        });
-
-        return resp.map((eq: Equipment) => ({
-          ...eq,
-          flow: 2
-        }));
-      }
-    });
-
-    //   t.list.field("equipmentPropertiesByEquipment", {
-    //     type: "EquipmentProperty",
-    //     args: { code: stringArg() },
-    //     resolve: (_, { id }, ctx) =>
-    //       ctx.prisma.equipmentProperties({
-    //         where: { equipmentProperties: { id } }
-    //       })
-    //   });
+    t.list.field("sensors", sensor_field);
   }
 });
 
