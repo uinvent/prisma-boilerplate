@@ -2,6 +2,16 @@
 
 Boilerplate project with dependencies that are required to start Prisma based application development
 
+# Project Setup
+
+1. npm install -g prisma
+2. install docker-compose library
+3. Update docker-compose.yml with your local database information
+4. 'npm install' to install all required node packages
+5. 'docker-compose up' to run prisma server
+6. 'prisma deploy' to start prisma migrations, prisma client generate and nexus prisma setup
+7. 'npm run start' to start graphql-yoga server
+
 ## Dependencies
 
 1. Prisma Version 1.34
@@ -45,7 +55,14 @@ All of these types are written in datamodel.prisma file
 
 ## References
 
-For detailed information regarding prisma client write api
-https://www.prisma.io/docs/prisma-client/basic-data-access/writing-data-TYPESCRIPT-rsc7/
-For detailed information regarding prisma client read api
-https://www.prisma.io/docs/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/
+- For detailed information regarding prisma client write api
+  https://www.prisma.io/docs/prisma-client/basic-data-access/writing-data-TYPESCRIPT-rsc7/
+
+- For detailed information regarding prisma client read api
+  https://www.prisma.io/docs/prisma-client/basic-data-access/reading-data-TYPESCRIPT-rsc3/
+
+- To setup relationships use below links,
+  https://www.prisma.io/blog/datamodel-v11-lrzqy1f56c90
+
+- Possible Queries and Mutations
+  https://graphql.org/learn/queries/
