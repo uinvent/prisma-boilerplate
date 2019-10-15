@@ -33,7 +33,6 @@ export const sensorEquipmentsQuery = {
     return await ctx.prisma.equipments({
       where: { equipmentClasses_some: { code: "sensor" } }
     });
-    // .$fragment(equipmentWithEquipmentClassesFragment); // Attach equipmentClasses in query output
   }
 };
 
@@ -90,6 +89,39 @@ export const createSensorWithClass = {
         }
       })
       .$fragment(equipmentWithEquipmentClassesFragment);
+    return createdSensor;
+  }
+};
+
+// Extend Equipment to create sensors
+export const createSensorEquipment = {
+  type: "Equipment",
+  args: {
+    name: stringArg(),
+    code: stringArg()
+  },
+  resolve: async (_, { name, code }, ctx) => {
+    const sensorEquipmentClasses = await ctx.prisma.equipmentClasses({
+      where: { code: "sensor" }
+    });
+    const equipmentClassID =
+      sensorEquipmentClasses.length > 0 ? sensorEquipmentClasses[0].id : "";
+
+    if (!equipmentClassID) {
+      throw new Error("Could not find any `sensor` equipment class.");
+    }
+
+    const createdSensor = await ctx.prisma.createEquipment({
+      code,
+      name,
+      equipmentClasses: {
+        connect: [
+          {
+            id: equipmentClassID
+          }
+        ]
+      }
+    });
     return createdSensor;
   }
 };
