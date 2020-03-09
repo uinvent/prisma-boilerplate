@@ -4,13 +4,13 @@ Boilerplate project with dependencies that are required to start Prisma based ap
 
 # Project Setup
 
-1. npm install -g prisma
+1. `npm install -g prisma`
 2. install docker-compose library
-3. Update docker-compose.yml with your local database information
-4. 'npm install' to install all required node packages
-5. 'docker-compose up' to run prisma server
-6. 'prisma deploy' to start prisma migrations, prisma client generate and nexus prisma setup
-7. 'npm run start' to start graphql-yoga server
+3. Update `docker-compose.yml` with your local database information
+4. `npm install` to install all required node packages
+5. `docker-compose up` to run prisma server
+6. `prisma deploy` to start prisma migrations, prisma client generate and nexus prisma setup
+7. `npm run start` to start graphql-yoga server
 
 ## Dependencies
 
